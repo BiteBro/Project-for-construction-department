@@ -8,5 +8,4 @@ public class RunConsole {
     public static void main(String[] args) {
         System.out.println("Hello");
     }
-    
 }
