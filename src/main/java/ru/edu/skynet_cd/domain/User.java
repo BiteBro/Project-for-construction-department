@@ -1,7 +1,9 @@
 package ru.edu.skynet_cd.domain;
 
-public class User {   
-    private Long id;   
+import java.io.Serializable;
+
+public class User implements Serializable{   
+    private Long idUser;   
     private String firstName;    
     private String secondName;    
     private String patronymic;    
@@ -12,7 +14,8 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String secondName, String patronymic, Position position, String login, String pwd) {
+    public User(String firstName, String secondName, String patronymic, Position position, 
+                    String login, String pwd) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.patronymic = patronymic;
@@ -23,8 +26,8 @@ public class User {
     
     public String getFullName(){
         return new StringBuilder().append(firstName).append(" ")
-                                        .append(secondName).append(" ")
-                                        .append(patronymic).toString();    
+                                  .append(secondName).append(" ")
+                                  .append(patronymic).toString();    
     }
 
     public String getFirstName() {
@@ -43,12 +46,12 @@ public class User {
         this.secondName = secondName;
     }
     
-    public Long getId() {
-        return id;
+    public Long getIdUser() {
+        return idUser;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
 
     public String getPatronymic() {

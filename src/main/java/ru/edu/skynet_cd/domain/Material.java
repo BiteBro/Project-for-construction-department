@@ -1,10 +1,12 @@
 package ru.edu.skynet_cd.domain;
 
-public class Material {
-    private Long id;   
+import java.io.Serializable;
+
+public class Material implements Serializable{
     private String nameMatherial;    
     private Integer issued;    
     private Integer received;
+    private Long idTask;
 
     public Material() {
     }
@@ -14,13 +16,18 @@ public class Material {
         this.issued = issued;
         this.received = received;
     }
-    
-    public Long getId() {
-        return id;
+
+    public Material(String nameMatherial, Integer issued, Integer received, Long idTask) {
+        this(nameMatherial, issued, received);
+        this.idTask = idTask;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getIdTask() {
+        return idTask;
+    }
+
+    public void setIdTask(Long idTask) {
+        this.idTask = idTask;
     }
 
     public String getNameMatherial() {

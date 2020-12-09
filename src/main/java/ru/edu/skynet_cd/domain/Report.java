@@ -1,43 +1,40 @@
 package ru.edu.skynet_cd.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Report {
-    private Long id;
-    private String address;    
+public class Report implements Serializable{ 
     private LocalDate reportDate;
     private Integer totalApartments;    
     private String boxPosition;    
     private String pointEnergy;    
     private String note;    
-
+    private Long idTask;
+    
     public Report() {
     }
 
-    public Report(String address, LocalDate reportDate, Integer totalApartments, 
-                    String boxPosition, String pointEnergy, String note) {
-        this.address = address;
+    public Report(LocalDate reportDate, Integer totalApartments, String boxPosition, 
+                    String pointEnergy, String note) {
         this.reportDate = reportDate;
         this.totalApartments = totalApartments;
         this.boxPosition = boxPosition;
         this.pointEnergy = pointEnergy;
-        this.note = note;
+        this.note = note;        
+    }
+    
+    public Report(LocalDate reportDate, Integer totalApartments, String boxPosition, 
+                    String pointEnergy, String note, Long idTask) {
+        this(reportDate, totalApartments, boxPosition, pointEnergy, note);
+        this.idTask = idTask;
+    }
+    
+    public Long getIdTask() {
+        return idTask;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setIdTask(Long idTask) {
+        this.idTask = idTask;
     }
 
     public LocalDate getReportDate() {

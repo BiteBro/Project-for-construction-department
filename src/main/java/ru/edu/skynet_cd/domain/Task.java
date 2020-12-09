@@ -1,10 +1,11 @@
 package ru.edu.skynet_cd.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Task {
-    private Long id;   
+public class Task implements Serializable{
+    private Long idTask;   
     private String address;    
     private User executor;    
     private User creator;    
@@ -16,23 +17,30 @@ public class Task {
     public Task() {
     }
 
-    public Task(String address, User executor, User creator, LocalDate createDate, 
-                TaskStatusEnum taskStatus, List<Material> arrayMaterial, Report report) {
+    public Task(String address, User executor, User creator, LocalDate taskDate, 
+                    TaskStatusEnum taskStatus) {
         this.address = address;
         this.executor = executor;
         this.creator = creator;
-        this.taskDate = createDate;
-        this.taskStatus = taskStatus;
+        this.taskDate = taskDate;
+        this.taskStatus = taskStatus;        
+    }
+
+    public Task(String address, User executor, User creator, LocalDate taskDate, 
+                    TaskStatusEnum taskStatus, List<Material> arrayMaterial, Report report) {
+        this(address, executor, creator, taskDate, taskStatus);
         this.arrayMaterial = arrayMaterial;
         this.report = report;
     }
+    
+    
 
-    public Long getId() {
-        return id;
+    public Long getIdTask() {
+        return idTask;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdTask(Long idTask) {
+        this.idTask = idTask;
     }
 
     public String getAddress() {
