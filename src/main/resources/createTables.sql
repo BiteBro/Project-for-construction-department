@@ -7,18 +7,14 @@
  * Script for deleting tables from DB.
  */
 
-DROP TABLE IF EXISTS `skynet_cd`.`material`;
+DROP TABLE IF EXISTS `skynet_cd`.`materials`;
 DROP TABLE IF EXISTS `skynet_cd`.`report`;
 DROP TABLE IF EXISTS `skynet_cd`.`task`;
 DROP TABLE IF EXISTS `skynet_cd`.`user`;
 DROP TABLE IF EXISTS `skynet_cd`.`position`;
 
-/*
- * Script for created tables in DB.
- */
-
 CREATE TABLE `skynet_cd`.`position` (
-  `id_position` BIGINT NOT NULL AUTO_INCREMENT,
+  `id_position` INT NOT NULL AUTO_INCREMENT,
   `position_name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_position`),
   UNIQUE INDEX `id_position_UNIQUE` (`id_position` ASC) VISIBLE);
@@ -28,7 +24,7 @@ CREATE TABLE `skynet_cd`.`user` (
   `first_name` VARCHAR(45) NOT NULL,
   `second_name` VARCHAR(45) NOT NULL,
   `patronymic` VARCHAR(45) NOT NULL,
-  `id_position` BIGINT NOT NULL,
+  `id_position` INT NOT NULL,
   `login` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_user`),
@@ -63,7 +59,7 @@ CREATE TABLE `skynet_cd`.`task` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE TABLE `skynet_cd`.`material` (
+CREATE TABLE `skynet_cd`.`materials` (
   `id_material` BIGINT NOT NULL AUTO_INCREMENT,
   `material_name` VARCHAR(45) NOT NULL,
   `material_issued` INT NOT NULL,
@@ -75,7 +71,7 @@ CREATE TABLE `skynet_cd`.`material` (
   CONSTRAINT `id_task_mat_key`
     FOREIGN KEY (`id_task`)
     REFERENCES `skynet_cd`.`task` (`id_task`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION);
 
 CREATE TABLE `skynet_cd`.`report` (
@@ -94,7 +90,7 @@ CREATE TABLE `skynet_cd`.`report` (
   CONSTRAINT `id_task_key`
     FOREIGN KEY (`id_task`)
     REFERENCES `skynet_cd`.`task` (`id_task`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION);
 
 

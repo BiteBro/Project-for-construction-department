@@ -1,6 +1,7 @@
 package ru.edu.skynet_cd.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class User implements Serializable{   
     private Long idUser;   
@@ -12,6 +13,12 @@ public class User implements Serializable{
     private String pwd;
 
     public User() {
+    }
+    public User(String firstName, String secondName, String patronymic, String login){        
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.patronymic = patronymic;        
+        this.login = login;       
     }
 
     public User(String firstName, String secondName, String patronymic, Position position, 
@@ -85,6 +92,53 @@ public class User implements Serializable{
     public void setPwd(String pwd) {
         this.pwd = pwd;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "User{ " + "idUser= " + idUser + ", firstName= " + 
+                firstName + ", secondName= " + secondName + ", patronymic= " + 
+                    patronymic + ", " + position.toString() + 
+                        ", login= " + login + ", pwd= " + pwd + " }";
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.firstName);
+        hash = 83 * hash + Objects.hashCode(this.secondName);
+        hash = 83 * hash + Objects.hashCode(this.patronymic);
+        hash = 83 * hash + Objects.hashCode(this.position);
+        hash = 83 * hash + Objects.hashCode(this.login);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final User other = (User) obj;
+        if (!Objects.equals(this.firstName, other.firstName)) {
+            return false;
+        }
+        if (!Objects.equals(this.secondName, other.secondName)) {
+            return false;
+        }
+        if (!Objects.equals(this.patronymic, other.patronymic)) {
+            return false;
+        }
+        if (!Objects.equals(this.login, other.login)) {
+            return false;
+        }
+        if (!Objects.equals(this.position, other.position)) {
+            return false;
+        }
+        return true;
+    }
 }

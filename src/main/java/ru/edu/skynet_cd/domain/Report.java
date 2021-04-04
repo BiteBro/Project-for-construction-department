@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Report implements Serializable{ 
+    private Long id;
+    private String reportAddress;
     private LocalDate reportDate;
     private Integer totalApartments;    
     private String boxPosition;    
@@ -14,8 +16,9 @@ public class Report implements Serializable{
     public Report() {
     }
 
-    public Report(LocalDate reportDate, Integer totalApartments, String boxPosition, 
+    public Report(String reportAddress, LocalDate reportDate, Integer totalApartments, String boxPosition, 
                     String pointEnergy, String note) {
+        this.reportAddress = reportAddress;
         this.reportDate = reportDate;
         this.totalApartments = totalApartments;
         this.boxPosition = boxPosition;
@@ -23,10 +26,34 @@ public class Report implements Serializable{
         this.note = note;        
     }
     
-    public Report(LocalDate reportDate, Integer totalApartments, String boxPosition, 
+    public Report(String reportAddress, LocalDate reportDate, Integer totalApartments, String boxPosition, 
                     String pointEnergy, String note, Long idTask) {
-        this(reportDate, totalApartments, boxPosition, pointEnergy, note);
+        this(reportAddress, reportDate, totalApartments, boxPosition, pointEnergy, note);
         this.idTask = idTask;
+    }
+
+    @Override
+    public String toString() {
+        return "Report{" + "id=" + id + ", reportAddress=" + reportAddress + 
+                ", reportDate=" + reportDate + ", totalApartments=" + totalApartments + 
+                ", boxPosition=" + boxPosition + ", pointEnergy=" + pointEnergy + 
+                ", note=" + note + ", idTask=" + idTask + '}';
+    }
+    
+    public String getReportAddress() {
+        return reportAddress;
+    }
+
+    public void setReportAddress(String reportAddress) {
+        this.reportAddress = reportAddress;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
     public Long getIdTask() {
@@ -76,6 +103,4 @@ public class Report implements Serializable{
     public void setNote(String note) {
         this.note = note;
     }
-    
-    
 }

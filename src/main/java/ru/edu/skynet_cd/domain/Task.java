@@ -2,39 +2,27 @@ package ru.edu.skynet_cd.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 public class Task implements Serializable{
     private Long idTask;   
     private String address;    
-    private User executor;    
-    private User creator;    
-    private LocalDate taskDate;    
-    private TaskStatusEnum taskStatus;    
-    private List<Material> arrayMaterial;
-    private Report report;
+    private Long idExecutor;    
+    private Long idCreator;    
+    private TaskStatusEnum taskStatus;
+    private LocalDate taskDate; 
 
     public Task() {
     }
 
-    public Task(String address, User executor, User creator, LocalDate taskDate, 
-                    TaskStatusEnum taskStatus) {
+    public Task(String address, Long idExecutor, Long idCreator, 
+                    TaskStatusEnum taskStatus, LocalDate taskDate) {
         this.address = address;
-        this.executor = executor;
-        this.creator = creator;
-        this.taskDate = taskDate;
-        this.taskStatus = taskStatus;        
-    }
-
-    public Task(String address, User executor, User creator, LocalDate taskDate, 
-                    TaskStatusEnum taskStatus, List<Material> arrayMaterial, Report report) {
-        this(address, executor, creator, taskDate, taskStatus);
-        this.arrayMaterial = arrayMaterial;
-        this.report = report;
+        this.idExecutor = idExecutor;
+        this.idCreator = idCreator;
+        this.taskStatus = taskStatus;  
+        this.taskDate = taskDate;                      
     }
     
-    
-
     public Long getIdTask() {
         return idTask;
     }
@@ -51,20 +39,20 @@ public class Task implements Serializable{
         this.address = address;
     }
 
-    public User getExecutor() {
-        return executor;
+    public Long getExecutor() {
+        return idExecutor;
     }
 
-    public void setExecutor(User executor) {
-        this.executor = executor;
+    public void setExecutor(Long idExecutor) {
+        this.idExecutor = idExecutor;
     }
 
-    public User getCreator() {
-        return creator;
+    public Long getCreator() {
+        return idCreator;
     }
 
-    public void setCreator(User creator) {
-        this.creator = creator;
+    public void setCreator(Long idCreator) {
+        this.idCreator = idCreator;
     }
 
     public LocalDate getTaskDate() {
@@ -83,21 +71,8 @@ public class Task implements Serializable{
         this.taskStatus = taskStatus;
     }
 
-    public List<Material> getArrayMaterial() {
-        return arrayMaterial;
+    @Override
+    public String toString() {
+        return "Task{" + "idTask=" + idTask + ", address=" + address + ", idExecutor=" + idExecutor + ", idCreator=" + idCreator + ", taskStatus=" + taskStatus + ", taskDate=" + taskDate + '}';
     }
-
-    public void setArrayMaterial(List<Material> arrayMaterial) {
-        this.arrayMaterial = arrayMaterial;
-    }
-
-    public Report getReport() {
-        return report;
-    }
-
-    public void setReport(Report report) {
-        this.report = report;
-    }
-
-    
 }

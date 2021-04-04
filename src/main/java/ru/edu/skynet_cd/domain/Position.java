@@ -13,11 +13,11 @@ public class Position implements Serializable{
         this.name = name;       
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -32,7 +32,5 @@ public class Position implements Serializable{
     @Override
     public String toString() {
         return "Position{ " + "name= " + name + " }";
-    }
-    
-    
+    } 
 }
